@@ -28,6 +28,7 @@ def plot_distribution_grid(title: str, data_sample: Iterable[float]):
     plot_df["group"] = "sample"
     mean_value = float(values.mean())
     median_value = float(values.median())
+    std_value = float(values.std(ddof=1))
     quantile_df = pd.DataFrame(
         {"q": values.quantile([0.25, 0.5, 0.75]).to_numpy()}
     )
@@ -70,5 +71,7 @@ def plot_distribution_grid(title: str, data_sample: Iterable[float]):
     )
 
     combined_plot = (p_hist | p_ecdf) / (p_density | p_box)
+    print(f"* Medelvärde: {mean_value:.3f}, Median: {median_value:.3f}")
+    print(f"* Standardavvikelse: {std_value:.3f}")
     display(Markdown(f"### {title}"))
     display(combined_plot)

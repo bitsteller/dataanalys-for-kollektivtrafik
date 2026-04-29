@@ -1,0 +1,29 @@
+---
+description: Kodstandarder for Jupyter notebooks i projektet
+globs: Kod/Laboration*/*.ipynb
+alwaysApply: false
+---
+
+# Notebook Coding Standards
+
+Folj dessa regler nar du andrar eller skapar notebooks.
+
+## Struktur
+
+- Håll celler sma och fokuserade pa en uppgift.
+- Varje avsnitt indleds med en numererad rubrik, till exempel "1) Enkla beräkningar"
+- Första cella innehåller alltid given kod som kan köras direkt.
+- Övra celler kan innehålla ofullständig kod att fyllas i av deltagarna.
+- Undvik dolda beroenden mellan celler; varje cell ska kunna köras i ordning uppifrån och ned.
+
+## Kodkvalitet
+
+- Ingen cell ska ha mer än 20 rader kod.
+- Försök att hålla koden så enkel som möjlig.
+
+## Reproducerbarhet
+
+- Använd denna URL för att hämta filer i repositoriet: https://raw.githubusercontent.com/bitsteller/dataanalys-for-kollektivtrafik/main/
+- Rensa onodig output och stora mellanresultat innan commit.
+- Kontrollera att notebooken kör fran start till slut utan manuella mellansteg.
+- Använd endast dessa paket: polars, plotnine, statsmodels, scikit-learn

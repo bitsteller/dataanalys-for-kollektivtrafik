@@ -21,6 +21,7 @@ trains = (
     trains
     .drop_nulls(["PlannedDwellTime", "ActualDwellTime"])
     .filter((pl.col("PlannedDwellTime") >= 0) & (pl.col("ActualDwellTime") >= 0)) #tar bort orimliga värden
+    .filter((pl.col("PlannedDwellTime") <= 15) & (pl.col("ActualDwellTime") <= 60)) #tar bort extrema värden
 )
 # Write back to parquet
 trains.write_parquet("Data/Laboration 3/trains.parquet")

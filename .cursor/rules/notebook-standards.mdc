@@ -22,6 +22,7 @@ Folj dessa regler nar du andrar eller skapar notebooks.
 - Anvand enkla, tydliga variabelnamn och konsekvent stil.
 - Introducera nya funktioner med en kort bulletlista i avsnittets forklaringstext.
 - For visualisering: bygg forst en aggregerad/filtrerad tabell och plotta sedan den.
+- Använd aldrig pandas eller `to_pandas()`. Det behövs inte!
 
 ## Reproducerbarhet
 

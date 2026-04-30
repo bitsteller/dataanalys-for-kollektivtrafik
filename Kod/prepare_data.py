@@ -17,5 +17,10 @@ if "Hour" in trains.columns and not isinstance(trains["Hour"].dtype, pl.Enum):
         pl.col("Hour").cast(pl.Utf8).cast(pl.Enum(hour_order))
     ])
 
+trains = (
+    trains
+    .drop_nulls(["PlannedDwellTime", "ActualDwellTime"])
+    .filter((pl.col("PlannedDwellTime") >= 0) & (pl.col("ActualDwellTime") >= 0)) #tar bort orimliga värden
+)
 # Write back to parquet
 trains.write_parquet("Data/Laboration 3/trains.parquet")

@@ -30,20 +30,20 @@ reasons_dict = {
     row["Code"]: row["Level3Description"]
     for row in reasons.iter_rows(named=True)
 }
-# add reasons_dict to trains
+
+# add Deviations to trains
 trains = trains.with_columns(
     pl.col("DeviationCodes")
     .map_elements(
         lambda codes: (
-            []
+            ""
             if codes is None
-            else [reasons_dict[code] for code in codes if code in reasons_dict]
+            else ", ".join([reasons_dict[code] for code in codes if code in reasons_dict])
         ),
-        return_dtype=pl.List(pl.String),
+        return_dtype=pl.String,
     )
     .alias("Deviations")
 )
-
 
 # Write back to parquet
 trains.write_parquet("Data/Laboration 3/trains.parquet")
